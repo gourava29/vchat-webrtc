@@ -1,0 +1,23 @@
+{
+  "name": "vchat-webrtc",
+  "version": "1.0.0",
+  "description": "Video Chat App using webRTC",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gourava29/vchat-webrtc.git"
+  },
+  "keywords": [
+    "videochat",
+    "webRTC"
+  ],
+  "author": "gourava29",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gourava29/vchat-webrtc/issues"
+  },
+  "homepage": "https://github.com/gourava29/vchat-webrtc#readme"
+}

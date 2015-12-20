@@ -21,6 +21,13 @@ function Room(){
 	          stream: evnt.stream
 	        }]);
 	    };
+	    pc.on("addStream",function(evtn){
+	    	console.log('Received new stream');
+	        api.trigger('peer.stream', [{
+	          id: id,
+	          stream: evnt.stream
+	        }]);	
+	    })
 	    return pc;
     }
 

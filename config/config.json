@@ -1,4 +1,4 @@
 {
-  "PORT":  (process.env.PORT || 5555),
+  "PORT":  5555,
   "URL": "116.87.102.26"
 }

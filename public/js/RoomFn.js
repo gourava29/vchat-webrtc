@@ -66,7 +66,7 @@ function Room(){
 	    }
     }
 
-    var socket = io.connect("http://192.168.0.101:5555"),
+    var socket = io.connect(hostUrl),
         connected = false;
 
     function addHandlers(socket) {

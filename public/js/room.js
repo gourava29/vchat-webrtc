@@ -1,4 +1,3 @@
-var hostUrl = "https://fathomless-sands-9094.herokuapp.com/";//"http://localhost:5555";//
 var error = ""
 navigator.getUserMedia = ( navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || msgGetUserMedia );
 window.RTCPeerConnection = window.RTCPeerConnection || window.webkitRTCPeerConnection || window.mozRTCPeerConnection;

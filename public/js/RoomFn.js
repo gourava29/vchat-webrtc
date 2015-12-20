@@ -1,6 +1,14 @@
 
 function Room(){
-	var iceConfig = { 'iceServers': [{ 'url': 'stun:stun.l.google.com:19302' }]},
+	var iceConfig = { 'iceServers': [
+										{ 'url': 'stun:stun.l.google.com:19302' },
+										{
+											url: 'turn:numb.viagenie.ca',
+											credential: 'muazkh',
+											username: 'webrtc@live.com'
+										}
+									]
+	},
     peerConnections = {},
     currentId, roomId,
     stream;
@@ -21,13 +29,6 @@ function Room(){
 	          stream: evnt.stream
 	        }]);
 	    };
-	    pc.on("addStream",function(evnt){
-	    	console.log('Received new stream');
-	        api.trigger('peer.stream', [{
-	          id: id,
-	          stream: evnt.stream
-	        }]);	
-	    })
 	    return pc;
     }
 
@@ -48,14 +49,15 @@ function Room(){
         console.log(data)
         switch (data.type) {
     	    case 'sdp-offer':
-    	    	console.log(data.sdp);
-	        	pc.setRemoteDescription(new RTCSessionDescription(data.sdp), function () {
-	            	console.log('Setting remote description by offer');
-		            pc.createAnswer(function (sdp) {
-		              pc.setLocalDescription(sdp);
-		              socket.emit('msg', { by: currentId, to: data.by, sdp: sdp, type: 'sdp-answer' });
-		            });
-		        });
+    	    	if(data.sdp){
+    	    		pc.setRemoteDescription(new RTCSessionDescription(data.sdp), function () {
+		            	console.log('Setting remote description by offer');
+			            pc.createAnswer(function (sdp) {
+			              pc.setLocalDescription(sdp);
+			              socket.emit('msg', { by: currentId, to: data.by, sdp: sdp, type: 'sdp-answer' });
+			            });
+			        });	
+    	    	}
 	            break;
 	        case 'sdp-answer':
 	            pc.setRemoteDescription(new RTCSessionDescription(data.sdp), function () {

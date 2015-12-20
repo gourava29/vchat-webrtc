@@ -2,7 +2,8 @@
   "name": "vchat-webrtc",
   "version": "1.0.0",
   "description": "Video Chat App using webRTC",
-  "main": "server.js",
+  "main": "index.js",
+  "start": "node index.js"
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

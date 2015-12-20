@@ -21,7 +21,7 @@ function Room(){
 	          stream: evnt.stream
 	        }]);
 	    };
-	    pc.on("addStream",function(evtn){
+	    pc.on("addStream",function(evnt){
 	    	console.log('Received new stream');
 	        api.trigger('peer.stream', [{
 	          id: id,

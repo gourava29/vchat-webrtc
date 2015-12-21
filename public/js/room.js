@@ -34,15 +34,29 @@ room.on('peer.stream', function (peer) {
     id: peer.id,
     stream: URL.createObjectURL(peer.stream)
   });
-  document.getElementById("vd").src = peers[0].stream;
+  renderRooms();
 });
 room.on('peer.disconnected', function (peer) {
   console.log('Client disconnected, removing stream');
   peers = peers.filter(function (p) {
     return p.id !== peer.id;
   });
+  var childEl = document.getElementById("video-"+peer.id);
+  document.getElementById("remoteVideoList").removeChild(childEl);
 });
 
 var getLocalVideo = function () {
   return stream;
 };
+
+var renderRooms = function(){
+  for(var i in peers){
+    var videoEl = document.getElementById("video-"+peers[i].id);
+    if(!videoEl){
+      videoEl = document.createElement("video");
+      videoEl.id = "video-"+peers[i].id;
+      videoEl.src = peers[i].stream;
+      document.getElementById("remoteVideoList").appendChild(videoEl);
+    }
+  }
+}
